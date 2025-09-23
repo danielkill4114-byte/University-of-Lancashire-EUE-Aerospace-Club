@@ -1,4 +1,3 @@
-# Documentation
 ## Overview
 
 <div align="center">
