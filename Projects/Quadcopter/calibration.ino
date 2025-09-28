@@ -1,4 +1,4 @@
-/**
+ /**
  * 
  *     1. Plug your Arduino to your computer with USB cable, open terminal, then type 1 to send max throttle to every ESC to enter programming mode
  *     2. Power up your ESCs. You must hear "beep1 beep2 beep3" tones meaning the power supply is OK
