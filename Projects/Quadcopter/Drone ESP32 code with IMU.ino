@@ -53,6 +53,22 @@ void setup() {
   delay(250);
 
 Serial.begin(115200);
+  Wire.beginTransmission(0x68); 
+  Wire.write(0x6B);
+  Wire.write(0x00);
+  Wire.endTransmission();
+  for (RateCalibrationNumber=0;
+         RateCalibrationNumber<100; 
+         RateCalibrationNumber ++) {
+    gyro_signals();
+    RateCalibrationRoll+=RateRoll;
+    RateCalibrationPitch+=RatePitch;
+    RateCalibrationYaw+=RateYaw;
+    delay(1);
+  }
+  RateCalibrationRoll/=100;
+  RateCalibrationPitch/=100;
+  RateCalibrationYaw/=100;   
 
 	// Allow allocation of all timers
 	//ESP32PWM::allocateTimer(0);
@@ -88,32 +104,17 @@ Serial.begin(115200);
 
 }
 void loop() {
-     
-  Wire.beginTransmission(0x68); 
-  Wire.write(0x6B);
-  Wire.write(0x00);
-  Wire.endTransmission();
-  for (RateCalibrationNumber=0;
-         RateCalibrationNumber<100; 
-         RateCalibrationNumber ++) {
-    gyro_signals();
-    RateCalibrationRoll+=RateRoll;
-    RateCalibrationPitch+=RatePitch;
-    RateCalibrationYaw+=RateYaw;
-    delay(1);
-  }
-  RateCalibrationRoll/=100;
-  RateCalibrationPitch/=100;
-  RateCalibrationYaw/=100;   
-
+    
   gyro_signals();
   RateRoll-=RateCalibrationRoll;
   RatePitch-=RateCalibrationPitch;
   RateYaw-=RateCalibrationYaw;
   Serial.print("Roll rate [°/s]= ");
   Serial.print(RateRoll); 
+  Serial.print(",");
   Serial.print(" Pitch Rate [°/s]= ");
   Serial.print(RatePitch);
+  Serial.print(",");
   Serial.print(" Yaw Rate [°/s]= ");
   Serial.println(RateYaw);
   delay(50);
