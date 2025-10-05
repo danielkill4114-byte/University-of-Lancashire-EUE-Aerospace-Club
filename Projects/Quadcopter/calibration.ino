@@ -1,4 +1,4 @@
- /**
+/**
  * 
  *     1. Plug your Arduino to your computer with USB cable, open terminal, then type 1 to send max throttle to every ESC to enter programming mode
  *     2. Power up your ESCs. You must hear "beep1 beep2 beep3" tones meaning the power supply is OK
@@ -9,7 +9,8 @@
  *     7. Type 2 to launch test function. This will send min to max throttle to ESCs to test them
  */
 // ---------------------------------------------------------------------------
-#include <Servo.h>
+#include <ESP32Servo.h> 
+
 // ---------------------------------------------------------------------------
 // Customize here pulse lengths as needed
 #define MIN_PULSE_LENGTH 1000 // Minimum pulse length in µs
@@ -23,12 +24,12 @@ char data;
  * Initialisation routine
  */
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     
-    motA.attach(5, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH); // your pin configuration
-    motB.attach(6, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
-    motC.attach(9, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
-    motD.attach(11, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
+    motA.attach(13, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH); // your pin configuration
+    motB.attach(26, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
+    motC.attach(12, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
+    motD.attach(27, MIN_PULSE_LENGTH, MAX_PULSE_LENGTH);
     
     displayInstructions();
 }
