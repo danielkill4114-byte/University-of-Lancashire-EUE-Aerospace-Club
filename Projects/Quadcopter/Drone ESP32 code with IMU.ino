@@ -58,7 +58,7 @@ Serial.begin(115200);
   Wire.write(0x00);
   Wire.endTransmission();
   for (RateCalibrationNumber=0;
-         RateCalibrationNumber<100; 
+         RateCalibrationNumber<500; 
          RateCalibrationNumber ++) {
     gyro_signals();
     RateCalibrationRoll+=RateRoll;
@@ -66,9 +66,9 @@ Serial.begin(115200);
     RateCalibrationYaw+=RateYaw;
     delay(1);
   }
-  RateCalibrationRoll/=100;
-  RateCalibrationPitch/=100;
-  RateCalibrationYaw/=100;   
+  RateCalibrationRoll/=500;
+  RateCalibrationPitch/=500;
+  RateCalibrationYaw/=500;   
 
 	// Allow allocation of all timers
 	//ESP32PWM::allocateTimer(0);
