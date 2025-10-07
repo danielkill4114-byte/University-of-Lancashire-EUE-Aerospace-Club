@@ -1,0 +1,5 @@
+07/10/2025 (Ammar,Mohamed,Kasim,Nour)
+- After the motors went out of sync last session and Motor 4 failed , we replaced the motor with a new one. Today when attempting to 
+recalibrate the rest of the motors were succesfully in synce excpet Motor 4 which worked in delay compared to the others with 
+a high pitched sound. This led us to believe that the issue is with the ESC Connected to Motor 4. We confirmed this by switching ESC 3
+with ESC 4 and Motor 4 worked well in sync with the others.
