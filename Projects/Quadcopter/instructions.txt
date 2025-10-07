@@ -1,1 +1,0 @@
-1. When uploading code make sure to disconeect the 5v wire from the esp then re attach after successful upload
